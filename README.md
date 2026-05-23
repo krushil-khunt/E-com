@@ -87,21 +87,6 @@ php artisan serve
 
 ---
 
-## 🔑 Default Login Credentials
-
-Use these seeded credentials to access different roles in the application:
-
-### 👤 Customer Login
-* **Email**: `jethalal@gmail.com`
-* **Password**: `password`
-
-### 💼 Admin Portal Login
-* **Email**: `krushil@gmail.com`
-* **Password**: `password`
-* **Route**: `/admin` (or click Admin Panel from profile actions)
-
----
-
 ## 📸 Design Standards
 * **Primary (Navy)**: `#14213D` (Premium structure)
 * **Accent (Gold)**: `#FCA311` (High-conversion actions, notifications, highlights)
