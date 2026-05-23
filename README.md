@@ -59,14 +59,7 @@ cp .env.example .env
 php artisan key:generate
 ```
 
-Open `.env` and set your database connection details (default XAMPP configuration):
-```env
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=loginpage
-DB_USERNAME=root
-DB_PASSWORD=
+
 ```
 
 ### 4. Database Migrations & Seeding
