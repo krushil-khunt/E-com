@@ -20,9 +20,7 @@ class CategoryController extends Controller
 
         ]);
 
-        return redirect()->back()
-        ->with('success',
-        'Category Added');
+        return redirect()->back()->with('success','Category Added');
     }
 
     public function index()

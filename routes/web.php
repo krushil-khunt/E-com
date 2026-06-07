@@ -25,7 +25,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/register', [AuthController::class, 'showRegister']);
+Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
 
 Route::post('/register', [AuthController::class, 'register']);
 
@@ -72,20 +72,20 @@ Route::get('/increaseqty/{id}', [CartController::class, 'increase'])->middleware
 Route::get('/decreaseqty/{id}', [CartController::class, 'decrease'])->middleware('auth');
 
 
-//review apva mate
+// For adding reviews
 Route::post('/addreview/{id}', [ReviewController::class, 'store'])->middleware('auth');
 
 
-//Ored mate
+// For order
 Route::get('/checkout', [OrderController::class, 'checkout'])->middleware('auth');
 
 Route::post('/placeorder', [OrderController::class, 'placeorder'])->middleware('auth');
 
-//user પોતાના orders જોઈ શકે
+// User can view their own orders
 Route::get('/myorders', [OrderController::class, 'myorders'])->middleware('auth');
 
 
-//❤️ Wishlist System mate
+//❤️ For Wishlist system
 Route::get('/wishlist',[WishlistController::class, 'index'])->middleware('auth');
 
 Route::post('/addwishlist/{id}',[WishlistController::class, 'add'])->middleware('auth');
@@ -96,43 +96,27 @@ Route::get('/removewishlist/{id}',[WishlistController::class, 'remove'])->middle
 //Admin panel mate
 Route::get('/admin',[AuthController::class,'admin'])->middleware('admin');
 
-Route::get('/admin/products',
-[ProductController::class,'adminProducts'])
-->middleware('admin');
+Route::get('/admin/products',[ProductController::class,'adminProducts'])->middleware('admin');
 
-Route::get('/admin/orders',
-[OrderController::class,'adminorders'])
-->middleware('admin');
+Route::get('/admin/orders',[OrderController::class,'adminorders'])->middleware('admin');
 
-Route::get('/status/{id}',
-[OrderController::class,'status'])
-->middleware('admin');
+Route::get('/status/{id}',[OrderController::class,'status'])->middleware('admin');
 
 
-Route::get('/admin/users',
-[AuthController::class,'users'])
-->middleware('admin');
+Route::get('/admin/users',[AuthController::class,'users'])->middleware('admin');
 
-Route::get('/deleteuser/{id}',
-[AuthController::class,'deleteuser'])
-->middleware('admin');
+Route::get('/deleteuser/{id}',[AuthController::class,'deleteuser'])->middleware('admin');
 
 //pdf export krva mate
-Route::get('/exportpdf',
-[OrderController::class,'exportpdf'])
-->middleware('admin');
+Route::get('/exportpdf',[OrderController::class,'exportpdf'])->middleware('admin');
 
 
 //product ni cetegory mate
-Route::get('/addcategory',
-[CategoryController::class,'create']);
+Route::get('/addcategory',[CategoryController::class,'create']);
 
-Route::post('/savecategory',
-[CategoryController::class,'store']);
+Route::post('/savecategory',[CategoryController::class,'store']);
 
-Route::get('/categories',
-[CategoryController::class,'index']);
+Route::get('/categories',[CategoryController::class,'index']);
 
 //dislay mate cetegory
-Route::get('/category/{id}',
-[ProductController::class,'category']);
+Route::get('/category/{id}',[ProductController::class,'category']);

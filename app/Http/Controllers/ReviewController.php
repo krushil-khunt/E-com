@@ -18,7 +18,7 @@ class ReviewController extends Controller
         ]);
         return redirect()->back();
     }
-    //ProductController માં Reviews મોકલ va mate
+    // For sending reviews to ProductController
     public function show($id)
 {
     $product = Product::find($id);

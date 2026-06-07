@@ -17,7 +17,7 @@ class AuthController extends Controller
     }
     public function register(Request $request)
     {
-        // Validation - email unique check સાથે
+        // Validation - email unique check
         $request->validate([
             'name' => 'required|min:3|max:50',
             'email' => 'required|email|unique:users,email',
@@ -43,14 +43,12 @@ class AuthController extends Controller
             'password' => 'required|min:6',
         ]);
 
-        // Check કર કે user exist કરે છે કે નહીં
+        // Check if the user exists or not
         $userExists = User::where('email', $request->input("email"))->first();
 
         if (!$userExists) {
-            // User નથી → Register page પર મોકલ
-            return redirect('/register')->with(
-                'warning',
-                '⚠️ આ email થી કોઈ account નથી! પહેલા Sign Up કરો.'
+            // User does not exist → redirect to Register page
+            return redirect('/register')->with('warning','⚠️ No account exists with this email. Please sign up first.'
             );
         }
 
@@ -65,7 +63,7 @@ class AuthController extends Controller
             }
             return redirect('/display');
         } else {
-            return redirect('/login')->with('error', '❌ Password ખોટો છે! ફરી try કરો.');
+            return redirect('/login')->with('error', '❌ Incorrect password! Please try again.');
         }
     }
 

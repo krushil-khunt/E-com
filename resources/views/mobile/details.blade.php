@@ -280,14 +280,14 @@
                                     @csrf
 
                                     <button type="submit" class="w-full inline-flex items-center
-                                    justify-center gap-2
-                                    py-4 px-6
-                                    text-xs font-black
-                                    rounded-xl
-                                    bg-navy-800 hover:bg-black
-                                    text-white uppercase
-                                    tracking-wider
-                                    transition shadow-md">
+                                        justify-center gap-2
+                                        py-4 px-6
+                                        text-xs font-black
+                                        rounded-xl
+                                        bg-navy-800 hover:bg-black
+                                        text-white uppercase
+                                        tracking-wider
+                                        transition shadow-md">
 
                                         <i class="fas fa-bolt text-gold-500"></i>
 
@@ -300,14 +300,14 @@
                             @else
 
                                 <button disabled class="w-full inline-flex items-center
-                                    justify-center gap-2
-                                    py-4 px-6
-                                    text-xs font-black
-                                    rounded-xl
-                                    bg-rose-500
-                                    text-white uppercase
-                                    tracking-wider
-                                    cursor-not-allowed">
+                                        justify-center gap-2
+                                        py-4 px-6
+                                        text-xs font-black
+                                        rounded-xl
+                                        bg-rose-500
+                                        text-white uppercase
+                                        tracking-wider
+                                        cursor-not-allowed">
 
                                     <i class="fas fa-times-circle"></i>
 
@@ -318,14 +318,14 @@
                             @endif
                             @if($product->stock > 0)
 
-<p class="text-emerald-600
-text-xs font-semibold mt-2">
+                                                            <p class="text-emerald-600
+                                text-xs font-semibold mt-2">
 
-    {{ $product->stock }} items available
+                                                                {{ $product->stock }} items available
 
-</p>
+                                                            </p>
 
-@endif
+                            @endif
                             <form action="/addwishlist/{{ $product->id }}" method="POST" class="shrink-0">
                                 @csrf
                                 <button type="submit"

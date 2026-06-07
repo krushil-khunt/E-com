@@ -19,7 +19,7 @@ class ProductController extends Controller
     {
         $product = Product::all();
         $categories = Category::all();
-        //➡ હાલ login user ના cart માં કેટલા items છે એ ગણે છે.
+        // Count how many items the logged-in user has in the cart.
         $cartCount = Cart::where('user_id', Auth::id())->count();
 
         return view('mobile.disply', compact('product', 'cartCount','categories'));
@@ -82,12 +82,7 @@ class ProductController extends Controller
 {
     $product = Product::find($id);
 
-    $reviews = \App\Models\Review::join(
-        'users',
-        'reviews.user_id',
-        '=',
-        'users.id'
-    )
+    $reviews = \App\Models\Review::join('users','reviews.user_id','=','users.id')
 
     ->where('product_id',$id)
 
@@ -169,10 +164,10 @@ class ProductController extends Controller
         return redirect()->back()->with("success", "Data Delete Successfully");
     }
     public function category($id)
-{
-    $product = Product::where('category_id',$id)->get();
-    $categories = Category::all();
-    $cartCount = Cart::where('user_id',Auth::id())->count();
-    return view('mobile.disply',compact('product','categories','cartCount'));
-}
+    {
+        $product = Product::where('category_id',$id)->get();
+        $categories = Category::all();
+        $cartCount = Cart::where('user_id',Auth::id())->count();
+        return view('mobile.disply',compact('product','categories','cartCount'));
+    }
 }
